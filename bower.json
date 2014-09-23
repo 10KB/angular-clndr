@@ -1,0 +1,17 @@
+{
+  "name": "angular-clndr",
+  "description": "Angular directive for the CLNDR.js package.",
+  "version": "0.2.0",
+  "author": "10KB",
+  "main": "./angular-clndr.js",
+  "ignore": [
+    "src",
+    "Gruntfile.coffee",
+    "package.json",
+    "CNAME"
+  ],
+  "dependencies": {
+    "angular": ">=1",
+    "clndr": ">=1.2"
+  }
+}

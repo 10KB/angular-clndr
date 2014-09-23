@@ -1,0 +1,23 @@
+{
+  "name": "angular-clndr",
+  "version": "0.2.0",
+  "author": "10KB",
+  "repository": "https://github.com/10kb/angular-clndr.git",
+  "licenses": [
+    {
+      "type": "MIT",
+       "url": "http://10kb.mit-license.org"
+    }
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-contrib-coffee": "^0.11.0",
+    "grunt-contrib-connect": "~0.8.0",
+    "grunt-contrib-sass": "^0.7.4",
+    "grunt-contrib-uglify": "^0.5.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-ng-annotate": "^0.3.2",
+    "load-grunt-tasks": "^0.6.0"
+  }
+}

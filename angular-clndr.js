@@ -19,7 +19,7 @@
         clndr: '=tienClndrObject',
         events: '=tienClndrEvents'
       },
-      controller: function($scope, $element, $attrs, $transclude) {
+      controller: ["$scope", "$element", "$attrs", "$transclude", function($scope, $element, $attrs, $transclude) {
         return $transclude(function(clone, scope) {
           var render;
           $element.append(clone);
@@ -35,7 +35,7 @@
             render: render
           });
         });
-      }
+      }]
     };
   });
 

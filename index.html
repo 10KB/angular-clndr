@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>AngularJS Clndr Directive</title>
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+        <link href="angular-clndr.css" rel="stylesheet">
+        <style>
+            body {
+                margin-top: 1em;
+            }
+            p {
+                line-height: 24px;
+            }
+        </style>
+    </head>
+    <body class="container">
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1 col-md-12">
+                <div class="jumbotron">
+                    <h1>angular-clndr</h1>
+
+                    <p>Angular directive for CLNDR.js</p>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2>Getting Started</h2>
+                        <ol>
+                            <li>Install with bower: <code>bower install --save angular-clndr</code></li>
+                            <li>Include <code>angular-clndr.js</code>.</li>
+                            <li>Make sure to include all CLNDR.js dependencies.</li>
+                            <li>Add <code>tien.clndr</code> to you app modules.</li>
+                            <li>Use the <code>tien-clndr</code> directive.</li>
+                        </ol>
+
+                        If you don't like package managers, you can also directly download
+                        <a href="./angular-clndr.js">angular-clndr.js</a> or
+                        <a href="./angular-clndr.min.js">angular-clndr.min.js</a>.
+                    </div>
+                </div>
+                <hr>
+                <div class="row" ng-app="clndrApp">
+                    <div class="col-md-12" ng-controller="DemoCtrl">
+                        <h2>Demo</h2>
+
+                        <tien-clndr class="clndr" tien-clndr-object="clndr" tien-clndr-events="events">
+                          <div class="clndr-controls">
+                            <div class="clndr-previous-button" ng-click="clndr.back()">
+                              &lsaquo;
+                            </div>
+                            <div class="month">
+                              {{month}}
+                            </div>
+                            <div class="clndr-next-button" ng-click="clndr.forward()">
+                              &rsaquo;
+                            </div>
+                          </div>
+                          <div class="clndr-grid">
+                            <div class="days-of-the-week">
+                              <div class="header-day" ng-repeat="day in daysOfTheWeek track by $index">
+                                {{day}}
+                              </div>
+                            </div>
+                            <div class="days">
+                              <div class="{{day.classes}}" ng-repeat="day in days">
+                                <div class="event-indicator" ng-show="day.events" ng-click="showEvents(day.events)">{{day.events.length}}</div>
+                                {{day.day}}
+                              </div>
+                            </div>
+                          </div>
+                        </tien-clndr>
+                    </div>
+                </div>
+
+                <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+                <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js"></script>
+                <script src="//kylestetz.github.io/CLNDR/js/moment.js"></script>
+                <script src="//kylestetz.github.io/CLNDR/js/clndr.js"></script>
+                <script src="angular-clndr.js"></script>
+                <script>
+                    app = angular.module('clndrApp', ['tien.clndr']);
+                    app.controller('DemoCtrl', function ($scope) {
+                        $scope.events = [
+                            { date: moment().add(3, 'days').format(), title: "Happy days" },
+                            { date: moment().subtract(5, 'days').format(), title: "Good old days" },
+                            { date: moment().subtract(5, 'days').format(), title: "And some more" }
+                        ];
+                        $scope.showEvents = function(events) {
+                            alert(events.map(function(e) { return e.title }).join("\n"));
+                        };
+                    });
+                </script>
+
+                <hr>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2>Usage</h2>
+                        <p>
+                            Use the <code>tien-clndr</code> directive as element, all childs of this element have
+                            CLNDR.js data available on the object provided with the <code>tien-clndr-object</code>
+                            attributes. With this object on the child's scope, you can for example ng-repeat over the
+                            days and render the template Angular-style.
+                        </p>
+                        <p>
+                            Optionally pass an <a href="https://github.com/kylestetz/CLNDR#pass-in-your-events">array of events</a>
+                            to the directive with the <code>tien-clndr-events</code> attribute. Events are available
+                            on the scope at <code>day.events</code>, as shown in the example below:
+                        </p>
+<pre><code>&lt;tien-clndr class=&quot;clndr&quot; tien-clndr-object=&quot;clndr&quot; tien-clndr-events=&quot;events&quot;&gt;
+  &lt;div class=&quot;clndr-controls&quot;&gt;
+    &lt;div class=&quot;clndr-previous-button&quot; ng-click=&quot;clndr.back()&quot;&gt;
+      &amp;lsaquo;
+    &lt;/div&gt;
+    &lt;div class=&quot;month&quot;&gt;
+      {{month}}
+    &lt;/div&gt;
+    &lt;div class=&quot;clndr-next-button&quot; ng-click=&quot;clndr.forward()&quot;&gt;
+      &amp;rsaquo;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;clndr-grid&quot;&gt;
+    &lt;div class=&quot;days-of-the-week&quot;&gt;
+      &lt;div class=&quot;header-day&quot; ng-repeat=&quot;day in daysOfTheWeek track by $index&quot;&gt;
+        {{day}}
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;days&quot;&gt;
+      &lt;div class=&quot;{{day.classes}}&quot; ng-repeat=&quot;day in days&quot;&gt;
+        &lt;div class=&quot;event-indicator&quot; ng-show=&quot;day.events&quot; ng-click=&quot;showEvents(day.events)&quot;&gt;{{day.events.length}}&lt;/div&gt;
+        {{day.day}}
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/tien-clndr&gt;</code></pre>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p class="text-center">
+                            angular-clndr 0.1.0 &middot; Created by <a href="http://10kb.nl/">10KB</a><br>
+                            Based on <a href="http://kylestetz.github.io/CLNDR/">CLNDR.js</a>.
+                        </p>
+                        <p class="text-center">
+                            <a href="https://github.com/10KB/angular-clndr">GitHub Project</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

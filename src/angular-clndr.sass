@@ -1,0 +1,60 @@
+.clndr
+  display: block
+  margin: 0 auto
+  max-width: 400px
+
+  .clndr-controls
+    border-bottom: 1px solid #ccc
+    position: relative
+
+    .month
+      padding: 12px 0
+      text-align: center
+
+    .clndr-previous-button, .clndr-next-button
+      cursor: pointer
+      top: 0px
+      left: 0px
+      padding: 12px
+      position: absolute
+
+    .clndr-next-button
+      left: auto
+      right: 0px
+
+  .clndr-grid
+    .days-of-the-week
+      width: 100%
+
+      .header-day
+        float: left
+        width: (100% / 7)
+        padding: 12px 0
+        text-align: center
+
+  .days
+    .day, .empty
+      float: left
+      width: (100% / 7)
+      padding: 12px 0
+      position: relative
+      text-align: center
+
+      &.today
+        background-color: #ccc
+
+      .event-indicator
+        background-color: #3BB7E8
+        border-radius: 100%
+        color: #fff
+        cursor: pointer
+        font-size: 9px
+        height: 15px
+        line-height: 16px
+        position: absolute
+        right: 0px
+        top: 0px
+        width: 15px
+
+      &.adjacent-month
+        opacity: 0.3

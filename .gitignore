@@ -1,0 +1,34 @@
+# jetbrains
+idea/
+/*.iml
+
+# osx
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# node
+logs
+*.log
+pids
+*.pid
+*.seed
+lib-cov
+coverage
+.grunt
+build/Release
+node_modules
+.lock-wscript
+
+# sass
+.sass-cache
+
+# bower
+bower_components/
+build/
+dist/
