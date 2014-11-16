@@ -1,20 +1,17 @@
 ###!
-# angular-clndr 0.2.0
+# angular-clndr 0.3.0
 # 10KB, http://10kb.nl/
 # License: MIT
 ###
 
 module = angular.module('tien.clndr', [])
 
-module.directive 'tienClndr', ->
-  restrict: 'E'
-  replace: true
-  transclude: true
-  scope:
+TienClndrDirective = ->
+  scope =
     clndr: '=tienClndrObject'
     events: '=tienClndrEvents'
 
-  controller: ($scope, $element, $attrs, $transclude) ->
+  controller = ($scope, $element, $attrs, $transclude) ->
     $transclude (clone, scope) ->
       $element.append(clone)
 
@@ -29,3 +26,7 @@ module.directive 'tienClndr', ->
       # init CLNDR in virtual DOM-element
       $scope.clndr = angular.element("<div/>").clndr
         render: render
+
+  return {restrict: 'E', replace: true, transclude: true, scope: scope, controller: controller}
+
+module.directive('tienClndr', TienClndrDirective)
