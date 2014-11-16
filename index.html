@@ -43,7 +43,7 @@
                     <div class="col-md-12" ng-controller="DemoCtrl">
                         <h2>Demo</h2>
 
-                        <tien-clndr class="clndr" tien-clndr-object="clndr" tien-clndr-events="events">
+                        <tien-clndr class="clndr" tien-clndr-object="clndr" tien-clndr-events="events" tien-clndr-options="options">
                           <div class="clndr-controls">
                             <div class="clndr-previous-button" ng-click="clndr.back()">
                               &lsaquo;
@@ -80,6 +80,10 @@
                 <script>
                     app = angular.module('clndrApp', ['tien.clndr']);
                     app.controller('DemoCtrl', function ($scope) {
+                        $scope.options = {
+                            weekOffset: 1,
+                            daysOfTheWeek: ['ZO', 'MA', 'DI', 'WO', 'DO', 'VR', 'ZA']
+                        };
                         $scope.events = [
                             { date: moment().add(3, 'days').format(), title: "Happy days" },
                             { date: moment().subtract(5, 'days').format(), title: "Good old days" },
@@ -105,6 +109,12 @@
                             Optionally pass an <a href="https://github.com/kylestetz/CLNDR#pass-in-your-events">array of events</a>
                             to the directive with the <code>tien-clndr-events</code> attribute. Events are available
                             on the scope at <code>day.events</code>, as shown in the example below:
+                        </p>
+                        <p>
+                            To pass additional options on initialization of CLNDR, provide an options object to the
+                            <code>tien-clndr-options</code> attribute. See <a href="https://github.com/kylestetz/CLNDR#usage">CLNDR Usage</a>
+                            for all possible settings. Heads up: the <code>tien-clndr-options</code> object is only read
+                            once during transclusion!
                         </p>
 <pre><code>&lt;tien-clndr class=&quot;clndr&quot; tien-clndr-object=&quot;clndr&quot; tien-clndr-events=&quot;events&quot;&gt;
   &lt;div class=&quot;clndr-controls&quot;&gt;

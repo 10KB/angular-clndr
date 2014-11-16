@@ -14,11 +14,12 @@
     var controller, scope;
     scope = {
       clndr: '=tienClndrObject',
-      events: '=tienClndrEvents'
+      events: '=tienClndrEvents',
+      options: '=?tienClndrOptions'
     };
     controller = function($scope, $element, $attrs, $transclude) {
       return $transclude(function(clone, scope) {
-        var render;
+        var options, render;
         $element.append(clone);
         $scope.$watch('events', function(val) {
           if (val != null ? val.length : void 0) {
@@ -28,9 +29,10 @@
         render = function(data) {
           return angular.extend(scope, data);
         };
-        return $scope.clndr = angular.element("<div/>").clndr({
+        options = angular.extend($scope.options || {}, {
           render: render
         });
+        return $scope.clndr = angular.element("<div/>").clndr(options);
       });
     };
     return {

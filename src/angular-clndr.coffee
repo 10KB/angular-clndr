@@ -10,6 +10,7 @@ TienClndrDirective = ->
   scope =
     clndr: '=tienClndrObject'
     events: '=tienClndrEvents'
+    options: '=?tienClndrOptions'
 
   controller = ($scope, $element, $attrs, $transclude) ->
     $transclude (clone, scope) ->
@@ -23,9 +24,11 @@ TienClndrDirective = ->
       render = (data) ->
         angular.extend(scope, data)
 
+      # create options object for optional CLNDR settings
+      options = angular.extend($scope.options || {}, render: render)
+
       # init CLNDR in virtual DOM-element
-      $scope.clndr = angular.element("<div/>").clndr
-        render: render
+      $scope.clndr = angular.element("<div/>").clndr(options)
 
   return {restrict: 'E', replace: true, transclude: true, scope: scope, controller: controller}
 
