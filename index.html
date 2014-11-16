@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>AngularJS Clndr Directive</title>
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
         <link href="angular-clndr.css" rel="stylesheet">
         <style>
             body {
@@ -63,7 +63,7 @@
                             </div>
                             <div class="days">
                               <div class="{{day.classes}}" ng-repeat="day in days">
-                                <div class="event-indicator" ng-show="day.events" ng-click="showEvents(day.events)">{{day.events.length}}</div>
+                                <div class="event-indicator" ng-show="day.events.length" ng-click="showEvents(day.events)">{{day.events.length}}</div>
                                 {{day.day}}
                               </div>
                             </div>
@@ -73,7 +73,7 @@
                 </div>
 
                 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-                <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js"></script>
+                <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
                 <script src="//kylestetz.github.io/CLNDR/js/moment.js"></script>
                 <script src="//kylestetz.github.io/CLNDR/js/clndr.js"></script>
                 <script src="angular-clndr.js"></script>
@@ -126,7 +126,7 @@
     &lt;/div&gt;
     &lt;div class=&quot;days&quot;&gt;
       &lt;div class=&quot;{{day.classes}}&quot; ng-repeat=&quot;day in days&quot;&gt;
-        &lt;div class=&quot;event-indicator&quot; ng-show=&quot;day.events&quot; ng-click=&quot;showEvents(day.events)&quot;&gt;{{day.events.length}}&lt;/div&gt;
+        &lt;div class=&quot;event-indicator&quot; ng-show=&quot;day.events.length&quot; ng-click=&quot;showEvents(day.events)&quot;&gt;{{day.events.length}}&lt;/div&gt;
         {{day.day}}
       &lt;/div&gt;
     &lt;/div&gt;
@@ -138,7 +138,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <p class="text-center">
-                            angular-clndr 0.1.0 &middot; Created by <a href="http://10kb.nl/">10KB</a><br>
+                            angular-clndr 0.3.0 &middot; Created by <a href="http://10kb.nl/">10KB</a><br>
                             Based on <a href="http://kylestetz.github.io/CLNDR/">CLNDR.js</a>.
                         </p>
                         <p class="text-center">

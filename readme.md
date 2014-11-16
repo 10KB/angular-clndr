@@ -36,7 +36,7 @@ Directive usage:
     </div>
     <div class="days">
       <div class="{{day.classes}}" ng-repeat="day in days">
-        <div class="event-indicator" ng-show="day.events" ng-click="showEvents(day.events)">{{day.events.length}}</div>
+        <div class="event-indicator" ng-show="day.events.length" ng-click="showEvents(day.events)">{{day.events.length}}</div>
         {{day.day}}
       </div>
     </div>
