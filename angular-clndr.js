@@ -17,7 +17,7 @@
       events: '=tienClndrEvents',
       options: '=?tienClndrOptions'
     };
-    controller = function($scope, $element, $attrs, $transclude) {
+    controller = ['$scope','$element','$attrs','$transclude',function($scope, $element, $attrs, $transclude) {
       return $transclude(function(clone, scope) {
         var options, render;
         $element.append(clone);
@@ -34,7 +34,7 @@
         });
         return $scope.clndr = angular.element("<div/>").clndr(options);
       });
-    };
+    }];
     return {
       restrict: 'E',
       replace: true,
