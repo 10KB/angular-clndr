@@ -12,7 +12,7 @@ TienClndrDirective = ->
     events: '=tienClndrEvents'
     options: '=?tienClndrOptions'
 
-  controller = ($scope, $element, $attrs, $transclude) ->
+  controller = ["$scope", "$element", "$attrs", "$transclude", ($scope, $element, $attrs, $transclude) ->
     $transclude (clone, scope) ->
       $element.append(clone)
 
@@ -29,7 +29,7 @@ TienClndrDirective = ->
 
       # init CLNDR in virtual DOM-element
       $scope.clndr = angular.element("<div/>").clndr(options)
-
+  ]
   return {restrict: 'E', replace: true, transclude: true, scope: scope, controller: controller}
 
 module.directive('tienClndr', TienClndrDirective)
