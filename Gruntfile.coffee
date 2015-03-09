@@ -39,5 +39,5 @@ module.exports = (grunt) ->
         files: './src/angular-clndr.sass'
         tasks: ['sass']
 
-  grunt.registerTask('default', ['ngAnnotate', 'uglify'])
+  grunt.registerTask('default', ['coffee', 'ngAnnotate', 'uglify', 'sass'])
   grunt.registerTask('server', ['default', 'connect', 'watch'])
