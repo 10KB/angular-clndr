@@ -17,24 +17,26 @@
       events: '=tienClndrEvents',
       options: '=?tienClndrOptions'
     };
-    controller = function($scope, $element, $attrs, $transclude) {
-      return $transclude(function(clone, scope) {
-        var options, render;
-        $element.append(clone);
-        $scope.$watch('events', function(val) {
-          if (val != null ? val.length : void 0) {
-            return $scope.clndr.setEvents(angular.copy(val));
-          }
+    controller = [
+      "$scope", "$element", "$attrs", "$transclude", function($scope, $element, $attrs, $transclude) {
+        return $transclude(function(clone, scope) {
+          var options, render;
+          $element.append(clone);
+          $scope.$watch('events', function(val) {
+            if (val != null ? val.length : void 0) {
+              return $scope.clndr.setEvents(angular.copy(val));
+            }
+          });
+          render = function(data) {
+            return angular.extend(scope, data);
+          };
+          options = angular.extend($scope.options || {}, {
+            render: render
+          });
+          return $scope.clndr = angular.element("<div/>").clndr(options);
         });
-        render = function(data) {
-          return angular.extend(scope, data);
-        };
-        options = angular.extend($scope.options || {}, {
-          render: render
-        });
-        return $scope.clndr = angular.element("<div/>").clndr(options);
-      });
-    };
+      }
+    ];
     return {
       restrict: 'E',
       replace: true,
