@@ -23,9 +23,7 @@
           var options, render;
           $element.append(clone);
           $scope.$watch('events', function(val) {
-            if (val != null ? val.length : void 0) {
-              return $scope.clndr.setEvents(angular.copy(val));
-            }
+            return $scope.clndr.setEvents(angular.copy(val || []));
           });
           render = function(data) {
             return angular.extend(scope, data);
