@@ -44,7 +44,7 @@
       right: 0px;
       top: 0px;
       width: 15px; }
-    .clndr .days .day.adjacent-month, .clndr .days .empty.adjacent-month {
+    .clndr .days .day.adjacent-month, .clndr .days .day.inactive, .clndr .days .empty.adjacent-month, .clndr .days .empty.inactive {
       opacity: 0.3; }
 
 /*# sourceMappingURL=angular-clndr.css.map */

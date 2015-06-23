@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>AngularJS Clndr Directive</title>
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
         <link href="angular-clndr.css" rel="stylesheet">
         <style>
             body {
@@ -72,8 +72,8 @@
                     </div>
                 </div>
 
-                <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-                <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
+                <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+                <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.min.js"></script>
                 <script src="//kylestetz.github.io/CLNDR/js/moment.js"></script>
                 <script src="//kylestetz.github.io/CLNDR/js/clndr.js"></script>
                 <script src="angular-clndr.js"></script>
@@ -82,7 +82,11 @@
                     app.controller('DemoCtrl', function ($scope) {
                         $scope.options = {
                             weekOffset: 1,
-                            daysOfTheWeek: ['ZO', 'MA', 'DI', 'WO', 'DO', 'VR', 'ZA']
+                            daysOfTheWeek: ['ZO', 'MA', 'DI', 'WO', 'DO', 'VR', 'ZA'],
+                            constraints: {
+                                startDate: moment().subtract(1, 'months').format('YYYY-MM-15'),
+                                endDate: moment().add(2, 'months').format('YYYY-MM-15')
+                            }
                         };
                         $scope.events = [
                             { date: moment().add(3, 'days').format(), title: "Happy days" },
