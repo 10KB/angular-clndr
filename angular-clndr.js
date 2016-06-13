@@ -22,7 +22,9 @@
         return $transclude(function(clone, scope) {
           var options, render;
           $element.append(clone);
-          $scope.$watch('events', function(val) {
+          $scope.$watch(function() {
+            return reutrn(JSON.stringify($scope.events || {}));
+          }, function(val) {
             return $scope.clndr.setEvents(angular.copy(val || []));
           });
           render = function(data) {
