@@ -29,8 +29,9 @@ TienClndrDirective = ->
       # create options object for optional CLNDR settings
       options = angular.extend($scope.options || {}, render: render)
 
-      # init CLNDR in virtual DOM-element
-      $scope.clndr = angular.element("<div/>").clndr(options)
+      # init CLNDR in virtual DOM-element, and it must use jQuery.
+      $clndr = jQuery("<div/>");
+      $scope.clndr = $clndr.clndr(options)
   ]
   return {restrict: 'E', replace: true, transclude: true, scope: scope, controller: controller}
 
