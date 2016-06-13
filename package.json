@@ -8,6 +8,7 @@
        "url": "http://10kb.mit-license.org"
     }
   ],
+  "version": "0.3.3",
   "main": "./angular-clndr.js",
   "dependencies": {},
   "devDependencies": {
