@@ -25,7 +25,7 @@
           $scope.$watch(function() {
             return JSON.stringify($scope.events || {});
           }, function(val) {
-            return $scope.clndr.setEvents(angular.copy(val || []));
+            return $scope.clndr.setEvents(angular.copy($scope.events || []));
           });
           render = function(data) {
             return angular.extend(scope, data);

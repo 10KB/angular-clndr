@@ -20,7 +20,7 @@ TienClndrDirective = ->
       $scope.$watch () -> 
         return JSON.stringify($scope.events || {})
       , (val) ->
-        $scope.clndr.setEvents(angular.copy(val || []))
+        $scope.clndr.setEvents(angular.copy($scope.events || []))
 
       # extend all CLNDR data to scope
       render = (data) ->
