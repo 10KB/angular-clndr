@@ -23,7 +23,7 @@
           var options, render;
           $element.append(clone);
           $scope.$watch(function() {
-            return reutrn(JSON.stringify($scope.events || {}));
+            return JSON.stringify($scope.events || {});
           }, function(val) {
             return $scope.clndr.setEvents(angular.copy(val || []));
           });
