@@ -1,10 +1,10 @@
 angular-clndr
 =============
 
-An angular directive for [CLNDR.js](http://kylestetz.github.io/CLNDR/). With this directive you can render the
+An angular directive for [CLNDR.js](https://kylestetz.github.io/CLNDR/). With this directive you can render the
 CLNDR-template Angular-style.
 
-Brought to you by [10KB](http://10kb.nl/).
+Brought to you by [10KB](https://10kb.nl/).
 
 ## Demo
 
@@ -46,4 +46,4 @@ Directive usage:
 
 ## License
 
-angular-clndr is released under the [MIT license](http://10kb.mit-license.org/). 
+angular-clndr is released under the [MIT license](https://10kb.mit-license.org/). 
