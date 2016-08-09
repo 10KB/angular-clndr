@@ -20,10 +20,12 @@
     controller = [
       "$scope", "$element", "$attrs", "$transclude", function($scope, $element, $attrs, $transclude) {
         return $transclude(function(clone, scope) {
-          var options, render;
+          var $clndr, options, render;
           $element.append(clone);
-          $scope.$watch('events', function(val) {
-            return $scope.clndr.setEvents(angular.copy(val || []));
+          $scope.$watch(function() {
+            return JSON.stringify($scope.events || {});
+          }, function(val) {
+            return $scope.clndr.setEvents(angular.copy($scope.events || []));
           });
           render = function(data) {
             return angular.extend(scope, data);
@@ -31,7 +33,8 @@
           options = angular.extend($scope.options || {}, {
             render: render
           });
-          return $scope.clndr = angular.element("<div/>").clndr(options);
+          $clndr = jQuery("<div/>");
+          return $scope.clndr = $clndr.clndr(options);
         });
       }
     ];

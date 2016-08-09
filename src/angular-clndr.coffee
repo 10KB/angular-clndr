@@ -17,8 +17,10 @@ TienClndrDirective = ->
       $element.append(clone)
 
       # watch events from tien-clndr-events attribute
-      $scope.$watch 'events', (val) ->
-        $scope.clndr.setEvents(angular.copy(val || []))
+      $scope.$watch () -> 
+        return JSON.stringify($scope.events || {})
+      , (val) ->
+        $scope.clndr.setEvents(angular.copy($scope.events || []))
 
       # extend all CLNDR data to scope
       render = (data) ->
@@ -27,8 +29,9 @@ TienClndrDirective = ->
       # create options object for optional CLNDR settings
       options = angular.extend($scope.options || {}, render: render)
 
-      # init CLNDR in virtual DOM-element
-      $scope.clndr = angular.element("<div/>").clndr(options)
+      # init CLNDR in virtual DOM-element, and it must use jQuery.
+      $clndr = jQuery("<div/>");
+      $scope.clndr = $clndr.clndr(options)
   ]
   return {restrict: 'E', replace: true, transclude: true, scope: scope, controller: controller}
 
